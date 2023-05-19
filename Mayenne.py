@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import pandas as pd
@@ -16,28 +16,10 @@ df2022 = pd.read_excel('/Users/moussangambe/Desktop/Mayenne/Donées/donnees-esse
 # In[ ]:
 
 
-
-
-
-# In[2]:
-
-
 df2022
 
 
 # In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[3]:
 
 
 # Calculer le pourcentage de NA dans chaque colonne
@@ -46,19 +28,19 @@ df2022.isna().mean() * 100
 
 
 
-# In[4]:
+# In[ ]:
 
 
 df2021.isna().mean() * 100
 
 
-# In[5]:
+# In[ ]:
 
 
 df2020.isna().mean() * 100
 
 
-# In[6]:
+# In[ ]:
 
 
 df2019.isna().mean() * 100
@@ -72,7 +54,7 @@ df2019.isna().mean() * 100
 
 # #### Nettoyage de la base de données 2022
 
-# In[7]:
+# In[ ]:
 
 
 # Supprimer les doublons
@@ -94,7 +76,7 @@ df2022['annee_mois'] = df2022['referenceDecision'].dt.strftime('%Y-%m')
 
 
 
-# In[8]:
+# In[ ]:
 
 
 df2022
@@ -102,7 +84,7 @@ df2022
 
 # #### Nettoyage de la base de données 2021
 
-# In[9]:
+# In[ ]:
 
 
 # Supprimer les doublons
@@ -122,7 +104,7 @@ df2021['referenceDecision'] = pd.to_datetime(df2021['referenceDecision'])
 df2021['annee_mois'] = df2021['referenceDecision'].dt.strftime('%Y-%m')
 
 
-# In[10]:
+# In[ ]:
 
 
 df2021
@@ -130,7 +112,7 @@ df2021
 
 # #### Nettoyage de la base de données 2020
 
-# In[11]:
+# In[ ]:
 
 
 # Supprimer les doublons
@@ -153,7 +135,7 @@ df2020['referenceDecision'] = pd.to_datetime(df2020['referenceDecision'])
 df2020['annee_mois'] = df2020['referenceDecision'].dt.strftime('%Y-%m')
 
 
-# In[12]:
+# In[ ]:
 
 
 df2020
@@ -161,7 +143,7 @@ df2020
 
 # #### Nettoyage de la base de données 2019
 
-# In[13]:
+# In[ ]:
 
 
 # Supprimer les doublons
@@ -186,13 +168,13 @@ df2019['annee_mois'] = df2019['referenceDecision'].dt.strftime('%Y-%m')
 
 
 
-# In[14]:
+# In[ ]:
 
 
 df2022
 
 
-# In[15]:
+# In[ ]:
 
 
 import dash
@@ -282,7 +264,7 @@ fig.update_traces(marker=dict(color=colors,line=dict(color=colors, width=1.5)),t
 
 fig.update_layout(
     xaxis=dict(title='Années', tickmode='linear', dtick=1),
-    yaxis=dict(title='Montant total en euros', gridcolor='#f0f0f0'),
+    yaxis=dict(title='Montant total', gridcolor='#f0f0f0'),
     bargap=0.1,
     margin=dict(l=40, r=40, t=40, b=40),
     plot_bgcolor='#ffffff'
@@ -322,7 +304,7 @@ def update_graph3(value):
     fig.update_xaxes(title_text="Bénéficiaire")
 
     # Ajouter le nom de l'axe des ordonnées (axe y)
-    fig.update_yaxes(title_text="Montant en euros")
+    fig.update_yaxes(title_text="Montant")
 
     # Ajouter la légende
     fig.update_layout(
@@ -481,11 +463,5 @@ app.layout = html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run_server(debug=False, dev_tools_ui=False, dev_tools_props_check=False)
-
-
-# In[ ]:
-
-
-
+    app.run_server(port=8050)
 
